@@ -69,3 +69,29 @@
 #                     res_file.write(elem + '\n')
 #
 # longest_words('article.txt')
+
+# def pivotIndex(nums):
+#     left_and_right_sum = 0
+#     total_sum = sum(nums)
+#     for i in range(len(nums)):
+#         if nums[i] == total_sum - left_and_right_sum * 2:
+#             return i
+#         left_and_right_sum += nums[i]
+#     else:
+#         return -1
+
+def pivotIndex(nums):
+    left_sum, right_sum = 0, sum(nums)
+
+    for ind, el in enumerate(nums):
+        right_sum -= el
+        if left_sum == right_sum:
+            return ind
+        left_sum += el
+
+    return -1
+
+
+list1 = [-1,-1,1,1,0,0]
+
+print(pivotIndex(list1))
